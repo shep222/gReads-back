@@ -41,6 +41,11 @@ exports.seed = function(knex) {
           description: 'No matter how much experience you have with JavaScript, odds are you donâ€™t fully understand the language. As part of the "You Donâ€™t Know JS" series, this concise yet in-depth guide focuses on new asynchronous features and performance techniquesâ€”including Promises, generators, and Web Workersâ€”that let you create sophisticated single-page web applications and escape callback hell in the process.',
           coverUrl: 'https://s3-us-west-2.amazonaws.com/assessment-images/galvanize_reads/photos/async_and_performance.jpg'
         }
+
       ]);
+
+    })
+    .then(() => {
+      return knex.raw('ALTER SEQUENCE book_id_seq RESTART WITH 7')
     });
 };

@@ -14,24 +14,20 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    db.createUser(req.body.userId)
-    .then(() =>{
-    database.createComments(req.body).then(() => {
-  })
+    db.createAuthor(req.body)
         .then (()=> {
           res.sendStatus(201)
         })
-    })
 })
 
 router.patch('/:id', (req, res) => {
-    database.editComments(req.params.id, req.body).then((id) => {
+    db.editAuthor(req.params.id, req.body).then((id) => {
         res.send(`Updated Item ${id}`)
     })
 })
 
 router.delete('/:id', (req, res) => {
-  database.deleteComments(req.params.id).then((id) => {
+  db.deleteAuthor(req.params.id).then((id) => {
     res.send(`You deleted ${id}`)
   })
 })
