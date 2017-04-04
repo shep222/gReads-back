@@ -13,6 +13,13 @@ router.get('/:id', (req, res) => {
             res.send(book)
         })
 })
+router.get('/:id/authors', (req, res) => {
+    db.getBookAuthors(req.params.id)
+        .join(author_book, book_id, '=', book.id)
+        .then((book) => {
+            res.send(book)
+        })
+})
 
 router.post('/', (req, res) => {
     db.createBook(req.body)
@@ -21,7 +28,7 @@ router.post('/', (req, res) => {
         })
 })
 
-router.patch('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     db.editBook(req.params.id, req.body).then((id) => {
         res.send(`Updated Item ${id}`)
     })
