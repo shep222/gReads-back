@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
         })
 })
 
-router.patch('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     db.editAuthor(req.params.id, req.body).then((id) => {
         res.send(`Updated Item ${id}`)
     })
