@@ -2,7 +2,9 @@ const router = require('express').Router()
 const db = require('../db/bookAPI')
 
 router.get('/', (req, res) => {
-    db.getBook().then((book) => {
+    db.getBook()
+    .orderBy('id', 'asc')
+    .then((book) => {
         res.send(book)
     })
 })
@@ -13,13 +15,7 @@ router.get('/:id', (req, res) => {
             res.send(book)
         })
 })
-router.get('/:id/authors', (req, res) => {
-    db.getBookAuthors(req.params.id)
-        .join(author_book, book_id, '=', book.id)
-        .then((book) => {
-            res.send(book)
-        })
-})
+
 
 router.post('/', (req, res) => {
     db.createBook(req.body)
