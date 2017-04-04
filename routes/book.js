@@ -3,6 +3,7 @@ const db = require('../db/bookAPI')
 
 router.get('/', (req, res) => {
     db.getBook()
+    
     .orderBy('id', 'asc')
     .then((book) => {
         res.send(book)
